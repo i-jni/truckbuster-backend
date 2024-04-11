@@ -1,13 +1,13 @@
 const bookController = {
     findAll: (req, res) => {
-        res.status(200).json({message:'ok'})
+      res.status(200).json({ message: "Yesss  !!" });
     },
     findById: (req, res) => {
-        res.status(200).json({result: req.params.id})
+      res.status(200).json({ result: req.params.id })
     },
-    create: (req, res) => {
-        res.status(201).json({ result: req.body})
+    create: (req, res) =>{
+      res.status(201).json({ result: req.body})
     }
-}
-
-export default bookController;
+  };
+  
+  export default bookController;
