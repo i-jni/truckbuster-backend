@@ -8,6 +8,7 @@ Installation
     Clonez le dépôt du projet .
     Accédez au répertoire du projet et exécutez npm install pour installer les dépendances.
     Configurez les variables d'environnement dans un fichier .env.
+    Lancer le server : npm run dev
 
 Structure du Projet
 Architecture MVC
