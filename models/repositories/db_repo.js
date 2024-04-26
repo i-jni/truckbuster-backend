@@ -5,25 +5,28 @@ const db_modele = async () => {
     try {
         await connectDB();
         const firstRdv = {
-            date: "30-04-24",
-            heure_debut: "07:00",
-            heure_fin: "09:00",
+            startDate: "2023-04-18T07:00:00.000Z",
+            endDate: "2023-04-18T09:00:00.000Z",
             entreprise: {
-                nom: "Abc",
-                email_entreprise: "def@mail.fr",
-                chauffeur: "abc",
-                camion_immatricule: "dddd",
-                modele: 'a1',
-                marque: 'audi'
+              nom: "Entreprise ABC",
+              email_entreprise: "contact@entrepriseabc.com",
+              chauffeur: "John Doe",
+              camion_immatricule: "AB-123-CD",
+              modele: "Modèle X",
+              marque: "Marque Y"
             },
-            email_tbuster: "abc@mail.fr",
+            email_tbuster: "tbuster@exemple.com",
             pont: {
-                nom: "abd",
-                dispo: true,
-                heure_debut: "07:00",
-                heure_fin: "17:00"
+              nom: "Pont1",
+              // creneaux: [
+              //   {
+              //     debut: "2023-04-18T07:00:00.000Z",
+              //     fin: "2023-04-18T09:00:00.000Z",
+              //     disponible: true,
+              //   }
+              // ]
             }
-        };
+          }
         await saveRdv(firstRdv);
     } catch (error) {
         console.error("Error:", error);

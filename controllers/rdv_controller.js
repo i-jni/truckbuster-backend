@@ -2,7 +2,7 @@ import { Rdv } from "../models/config/db.js";
 
 
 const rdvController = {
-    //  tt les rdvs
+
     findAll: async (req, res) => {
         try {
             const rdvs = await Rdv.find();
@@ -26,13 +26,28 @@ const rdvController = {
     create: async (req, res) => {
         try {
             const rdvData = req.body;
-            const newRdv = new Rdv(rdvData);
-            await newRdv.save();
-            res.status(201).json(newRdv);
+    
+            // Récupérer les rdv existants pour le créneau horaire sélect
+            const existingRdvs = await Rdv.find({
+                startDate: rdvData.startDate 
+            });
+    
+
+            const rdvLimit = 2;
+    
+            if (existingRdvs.length < rdvLimit) {
+                const newRdv = new Rdv(rdvData);
+                await newRdv.save();
+                res.status(201).json(newRdv);
+            } else {
+                res.status(400).json({ error: 'Ce créneau horaire est complet. Sélectionner un autre créneau.' });
+            }
         } catch (error) {
             res.status(500).json({ error: 'Une erreur lors de la création du rdv' });
         }
     }
+
+
 };
 
 export default rdvController;
